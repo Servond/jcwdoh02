@@ -96,7 +96,7 @@ console.log(angka.toString());
 console.log(angka.toLocaleString("in-Id", {
     style: "currency",
     currency: "IDR"
-}))
+}));
 
 // GLOBAL BUILD IN METHOD
 console.log(parseInt(angka));

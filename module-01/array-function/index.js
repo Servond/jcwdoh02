@@ -152,3 +152,7 @@ function countToTen(number) {
 }
 
 console.log(countToTen(1))
+
+let arr = [1, "hello", [], true, {}];
+console.log(arr);
+

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function updateTitle() {
+        const title = document.getElementById("title");
+        title.textContent = "Updated Text";
+      }
+
+      function checkPekerjaan() {
+        const pekerjaan = document.getElementById("pekerjaan").value;
+        console.log(pekerjaan);
+        
+        const pekerjaanLain = document.getElementById("pekerjaan-lain");
+        if (pekerjaan === "Other") {
+            
+            pekerjaanLain.hidden = false;
+        } else {
+            pekerjaanLain.hidden = true;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div>
+      <h1 class="title" id="title">Original Text</h1>
+      <button onclick="updateTitle()">Update</button>
+    </div>
+    <div id="form" style="margin-top: 50px">
+      <h1>Form</h1>
+      <label>Pekerjaan :</label>
+      <br />
+      <select id="pekerjaan" onchange="checkPekerjaan()">
+        <option>Pegawai Swasta</option>
+        <option>PNS</option>
+        <option>Other</option>
+      </select>
+      <br />
+      <div id="pekerjaan-lain" hidden>
+        <label>Pekerjaan Lain :</label>
+        <br />
+        <input />
+      </div>
+    </div>
+  </body>
+</html>

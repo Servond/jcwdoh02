@@ -60,3 +60,13 @@ console.log(day2 - day1);
 console.log(date2)
 const dateDiff = (date2 - date1) / (24 * 3600 * 1000);
 console.log(dateDiff);
+
+let arr1 = ["apple", "banana", "cherry", "date"];
+
+function q2answer(arr1){
+    let arr1answer = arr1.splice(3);
+console.log (arr1answer);
+console.log (arr1);
+   console.log (arr1 + ', and ' + fruitname); 
+}
+q2answer(arr1);

@@ -1,5 +1,5 @@
 import { perkalian, pembagian, greet } from "./calculator.js";
-import messages from "./message.js";
+import messages, { product } from "./message.js";
 
 function pertambahan(a) {
   console.log(a);
@@ -85,3 +85,5 @@ async function exampleAsyncAwait() {
 }
 
 exampleAsyncAwait();
+
+console.log(product.name)

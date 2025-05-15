@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .responsive {
+            /* Mobile */
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            width: 320px;
+            border: 1px solid black;
+            background-color: antiquewhite;
+
+            /* Tablet */
+            @media screen and (min-width: 481px) and (max-width: 768px) {
+                width: 480px;
+                background-color: bisque;
+            }
+
+            /* Laptop */
+            @media screen and (min-width: 769px) and (max-width: 1024px) {
+                width: 768px;
+                background-color: aquamarine;
+            }
+
+            /* Dekstop */
+            @media screen and (min-width: 1025px) and (max-width: 1200px) {
+                width: 1024px;
+                background-color: red;
+            }
+
+            /* TV */
+            @media screen and (min-width: 1201px) {
+                width: 1200px;
+                background-color: orange;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="responsive">
+        <h1>Responsive Design</h1>
+    </div>
+</body>
+</html>

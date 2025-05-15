@@ -2,8 +2,13 @@ function halo() {
     return "halo"
 }
 
-function welcome() {
+function welcome(x) {
     return "welcome"
+}
+
+export const product = {
+    name: "apple",
+    price: 500
 }
 
 export default {

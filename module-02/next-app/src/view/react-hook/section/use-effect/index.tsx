@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 
-export default function UseEffect() {
+export default function UseEffect({ nama }: { nama: string }) {
   const [imgUrl, setImgUrl] = useState<string>();
   const [imgUrlUE, setImgUrlUE] = useState<string>();
 
@@ -35,6 +35,7 @@ export default function UseEffect() {
 
   return (
     <div>
+      Hello {nama}
       <div>
         <p>Tanpa Use Effect</p>
         <button onClick={fetchImgUrl}>Load Image</button>

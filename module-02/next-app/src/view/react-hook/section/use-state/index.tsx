@@ -1,8 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { useEmail } from "@/context/emailContext";
+import useCounter from "@/hook/countHook";
 
-export default function UseState() {
+export default function UseState({ nama }: { nama: string }) {
+  const { email } = useEmail();
+  const [count, increment] = useCounter(0);
   // Menggunakan State
   const [countState, setCountState] = useState<number>(0);
 
@@ -10,6 +14,7 @@ export default function UseState() {
   let countVar: number = 0;
   return (
     <div>
+      Hello {nama}, {email}
       <div>
         <p>Menggunakan Variable</p>
         count: {countVar}
@@ -25,10 +30,10 @@ export default function UseState() {
       </div>
       <div>
         <p>Menggunakan State</p>
-        count: {countState}
+        count: {count}
         <button
           className="p-4 bg-grey-300 rounded-md hover:bg-grey-400"
-          onClick={() => setCountState(countState + 1)}
+          onClick={increment}
         >
           Increment
         </button>

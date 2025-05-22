@@ -9,7 +9,8 @@ export interface IAuth {
 const initialState: IAuth = {
   user: {
     email: "",
-    name: "",
+    firstname: "",
+    lastname: "",
   },
   isLogin: false,
 };
@@ -27,7 +28,8 @@ const authSlice = createSlice({
     logoutSuccess: (state: IAuth) => {
       state.user = {
         email: "",
-        name: "",
+        firstname: "",
+        lastname: "",
       };
       state.isLogin = false;
     },
@@ -36,12 +38,11 @@ const authSlice = createSlice({
 
 export const login = () => async (dispatch: any) => {
   try {
-    const userObj = {
-      email: "budi@gmail.com",
-      name: "budi",
-    };
-
-    dispatch(loginSuccess({ ...userObj }));
+    // const userObj = {
+    //   email: "budi@gmail.com",
+    //   name: "budi",
+    // };
+    // dispatch(loginSuccess({ ...userObj }));
   } catch (err) {
     console.log(err);
   }

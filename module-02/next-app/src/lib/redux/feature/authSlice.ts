@@ -36,13 +36,9 @@ const authSlice = createSlice({
   },
 });
 
-export const login = () => async (dispatch: any) => {
+export const login = (params: IUser) => async (dispatch: any) => {
   try {
-    // const userObj = {
-    //   email: "budi@gmail.com",
-    //   name: "budi",
-    // };
-    // dispatch(loginSuccess({ ...userObj }));
+    dispatch(loginSuccess(params));
   } catch (err) {
     console.log(err);
   }

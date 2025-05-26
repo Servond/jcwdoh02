@@ -15,7 +15,7 @@ export default function Navbar() {
           <button onClick={() => dispatch(logout())}>Logout</button>
         ) : (
           <>
-            <button onClick={() => dispatch(login())}>Login</button>
+            <button>Login</button>
             <button>Register</button>
           </>
         )}

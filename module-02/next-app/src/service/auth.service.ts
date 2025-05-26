@@ -7,8 +7,6 @@ export async function signUpService(params: ISignUp) {
       "https://friskykey-us.backendless.app/api/data/user",
       params
     );
-
-    console.log(data);
   } catch (err) {
     throw err;
   }
@@ -19,8 +17,7 @@ export async function loginService(params: ILogin) {
     const { data } = await axios.get(
       `https://friskykey-us.backendless.app/api/data/user?where=email%3D'${params.email}'%20and%20password%3D'${params.password}'`
     );
-
-    console.log(data);
+    return data[0];
   } catch (err) {
     throw err;
   }

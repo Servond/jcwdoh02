@@ -4,6 +4,7 @@ import "./globals.css";
 
 import AuthProvider from "@/components/authProvider";
 import Navbar from "@/components/navbar";
+import Auth from "@/components/auth";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,8 +32,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AuthProvider>
-          <Navbar />
-          <div className="ml-auto mr-auto">{children}</div>
+          <Auth>
+            <Navbar />
+            <div className="ml-auto mr-auto">{children}</div>
+          </Auth>
         </AuthProvider>
       </body>
     </html>

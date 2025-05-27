@@ -7,7 +7,6 @@ import { login } from "@/lib/redux/feature/authSlice";
 import { Button } from "@/components/ui/button";
 import AuthCard from "../component/auth-card";
 
-import { signinService } from "@/service/auth.service";
 import Notification from "@/utils/notification";
 import { ISignin } from "@/interface/user.interface";
 import { signinSchema } from "./schema";
@@ -27,14 +26,10 @@ export default function SigninView() {
           validationSchema={signinSchema}
           onSubmit={async (values) => {
             try {
-              const { email, name, avatar, objectId } = await signinService(
-                values
-              );
-              dispatch(login({ email, name, avatar, userId: objectId })).then(
-                () => {
-                  router.push("/"), Notification("Sign in success", "success");
-                }
-              );
+              dispatch(login(values)).then(() => {
+                router.push("/");
+                Notification("Sign in success", "success");
+              });
             } catch (err) {
               const error = err as any;
               Notification(error.message, "error");

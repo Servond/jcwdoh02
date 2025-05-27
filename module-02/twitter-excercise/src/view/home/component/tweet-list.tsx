@@ -24,24 +24,22 @@ export default function TweetList() {
     <div className="w-[800px]">
       {posts.length > 0 ? (
         <div className="flex flex-col gap-10">
-          {posts.map((post, idx) =>
-            post.tweets[0] ? (
-              <div
-                key={`tweet-${idx}`}
-                className="bg-white border rounded-md w-full h-[120px] flex flex-row items-center gap-5"
-              >
-                <img
-                  src={post.avatar}
-                  alt="avatar"
-                  className="relative left-[-30px] w-34 h-34 border-none rounded-full bg-[#f1f5f9] shadow-2xl"
-                />
-                <div className="flex flex-col gap-2">
-                  <div className="font-bold">{post.email}</div>
-                  <div>{post.tweets[0].tweet}</div>
-                </div>
+          {posts.map((post, idx) => (
+            <div
+              key={`tweet-${idx}`}
+              className="bg-white border rounded-md w-full h-[120px] flex flex-row items-center gap-5"
+            >
+              <img
+                src={post.avatar}
+                alt="avatar"
+                className="relative left-[-30px] w-34 h-34 border-none rounded-full bg-[#f1f5f9] shadow-2xl"
+              />
+              <div className="flex flex-col gap-2">
+                <div className="font-bold">{post.email}</div>
+                <div>{post.tweet}</div>
               </div>
-            ) : null
-          )}
+            </div>
+          ))}
         </div>
       ) : null}
     </div>

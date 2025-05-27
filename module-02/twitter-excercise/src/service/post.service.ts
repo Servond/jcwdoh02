@@ -4,7 +4,7 @@ import { IUser } from "@/interface/user.interface";
 export async function fetchPostService() {
   try {
     const { data } = await axios.get(
-      `${process.env.NEXT_PUBLIC_BACKENDLESS_API}/user?loadRelations=tweets`
+      `${process.env.NEXT_PUBLIC_BACKENDLESS_API}/post`
     );
     return data;
   } catch (err) {
@@ -12,19 +12,18 @@ export async function fetchPostService() {
   }
 }
 
-export async function postTweetService(user: IUser, tweet: string) {
+export async function postTweetService(user: IUser, tweet: string | undefined) {
   try {
-    const { data } = await axios.post(
-      `${process.env.NEXT_PUBLIC_BACKENDLESS_API}/post`,
-      {
-        tweet,
-      }
-    );
+    await axios.post(`${process.env.NEXT_PUBLIC_BACKENDLESS_API}/post`, {
+      tweet,
+      email: user.email,
+      avatar: user.avatar,
+    });
 
-    await axios.put(
-      `${process.env.NEXT_PUBLIC_BACKENDLESS_API}/user/${user.userId}/tweets`,
-      [data.objectId]
-    );
+    // await axios.put(
+    //   `${process.env.NEXT_PUBLIC_BACKENDLESS_API}/user/${user.userId}/tweets`,
+    //   [data.objectId]
+    // );
   } catch (err) {
     throw err;
   }

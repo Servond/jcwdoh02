@@ -7,8 +7,6 @@ interface ITweet {
 
 export interface IPost {
   email: string;
-  name: string;
+  tweet: string;
   avatar: string;
-  objectId: string;
-  tweets: ITweet[];
 }

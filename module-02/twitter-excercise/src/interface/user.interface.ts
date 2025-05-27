@@ -3,6 +3,7 @@ export interface IUser {
   name: string;
   avatar: string;
   userId: string;
+  role: string;
 }
 
 export interface ISignin {

@@ -1,5 +1,7 @@
 import { ISignin } from "@/interface/user.interface";
 import axios from "axios";
+import sign from "jwt-encode";
+import { setCookie } from "cookies-next";
 
 export async function signupService(params: {
   name: string;
@@ -21,7 +23,21 @@ export async function signinService(params: ISignin) {
     const { data } = await axios.get(
       `${process.env.NEXT_PUBLIC_BACKENDLESS_API}/user?where=email%3D'${params.email}'%20and%20password%3D'${params.password}'`
     );
-    return data[0];
+
+    if (data.length === 0) throw new Error("User not found");
+
+    const secret = "asd123";
+    const payload = {
+      email: data[0].email,
+      name: data[0].name,
+      avatar: data[0].avatar,
+      userId: data[0].objectId,
+      role: data[0].role,
+    };
+
+    const token = sign(payload, secret);
+    setCookie("token", token);
+    return payload;
   } catch (err) {
     throw err;
   }

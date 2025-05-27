@@ -26,7 +26,7 @@ export async function signinService(params: ISignin) {
 
     if (data.length === 0) throw new Error("User not found");
 
-    const secret = "asd123";
+    const secret = process.env.NEXT_PUBLIC_SECRET_KEY || "";
     const payload = {
       email: data[0].email,
       name: data[0].name,

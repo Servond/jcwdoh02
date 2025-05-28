@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./feature/authSlice";
+import postReducer from "./feature/postSlice";
 
 export function makeStore() {
   return configureStore({
     reducer: {
       auth: authReducer,
+      post: postReducer,
     },
   });
 }

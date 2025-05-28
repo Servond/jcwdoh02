@@ -1,17 +1,19 @@
 "use client";
 import { useState, useRef } from "react";
-import { useAppSelector } from "@/lib/redux/hooks";
+import { useAppSelector, useAppDispatch } from "@/lib/redux/hooks";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { SnackbarProvider } from "notistack";
 
 import { postTweetService } from "@/service/post.service";
 import Notification from "@/utils/notification";
+import { fetchPost } from "@/lib/redux/feature/postSlice";
 
 export default function Tweet() {
   const { user, isLogin } = useAppSelector((state) => state.auth);
   const tweet = useRef<null | HTMLTextAreaElement>(null);
   const [charCount, setCharCount] = useState<number>(0);
+  const dispatch = useAppDispatch();
 
   function handleOnChange(value: string) {
     setCharCount(value.length);
@@ -42,9 +44,11 @@ export default function Tweet() {
               onClick={() => {
                 if (tweet.current?.value) {
                   postTweetService(user, tweet.current.value).then(() => {
+                    dispatch(fetchPost());
                     Notification("Post Success", "success");
                   });
                   tweet.current.value = "";
+                  setCharCount(0);
                 } else {
                   Notification("Input cannot be empty", "error");
                 }

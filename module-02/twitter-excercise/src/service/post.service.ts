@@ -1,6 +1,7 @@
 import axios from "axios";
-import { IUser } from "@/interface/user.interface";
 
+import { IUser } from "@/interface/user.interface";
+import { fetchPost } from "@/lib/redux/feature/postSlice";
 export async function fetchPostService() {
   try {
     const { data } = await axios.get(

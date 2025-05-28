@@ -1,25 +1,16 @@
 "use client";
 import { useState, useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "@/lib/redux/hooks";
 
-import { fetchPostService } from "@/service/post.service";
-import { IPost } from "@/interface/post.interface";
+import { fetchPost } from "@/lib/redux/feature/postSlice";
 export default function TweetList() {
-  const [posts, setPosts] = useState<IPost[]>([]);
-
-  async function fetchPost() {
-    try {
-      const data = await fetchPostService();
-
-      setPosts(data);
-    } catch (err) {
-      console.log(err);
-    }
-  }
+  const posts = useAppSelector((state) => state.post?.posts);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    fetchPost();
+    dispatch(fetchPost());
   }, []);
-
+  console.log("RENDER ULANG");
   return (
     <div className="w-[800px]">
       {posts.length > 0 ? (
